@@ -20,8 +20,8 @@ def predict():
     churn = predict_proba >= 0.5
 
     result = {
-        'churn_probability': predict_proba
-        'churn': churn
+        "churn_probability": float(predict_proba),
+        "churn": bool(churn)
     }
 
     return jsonify(result)
