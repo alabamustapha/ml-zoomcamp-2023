@@ -13,7 +13,9 @@ with open(input_model, 'rb') as f_in:
 @app.route('/predict', methods=['POST'])
 def predict():
 
-    customer = request.get_json()
+   
+    customer_dict = request.get_json()
+    
     X = dv.transform(customer_dict)
     predict_proba = model.predict_proba(X)[0, 1]
 
