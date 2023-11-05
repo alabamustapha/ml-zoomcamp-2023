@@ -11,17 +11,14 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import auc, roc_auc_score
 
 # Parameters
-
 C=1.0 
 file_name = f"model_C={C}.bin"
 
 # get dataset if missing
-
 if not os.path.isfile("telco-churn.csv"):
     get_ipython().system('wget -O telco-churn.csv "https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-03-churn-prediction/WA_Fn-UseC_-Telco-Customer-Churn.csv"')
 
 # data preparation
-
 df = pd.read_csv("telco-churn.csv")
 df.columns = df.columns.str.lower().str.replace(' ', '_')
 categorical_columns = df.dtypes[df.dtypes == 'object'].index
@@ -95,6 +92,7 @@ full_train_auc = roc_auc_score(y_test, y_pred)
 
 print(f"Full training AUC: {full_train_auc}")
 
+# saving the model
 with open(file_name, 'wb') as f_out:
     pickle.dump((dv, model), f_out)
 

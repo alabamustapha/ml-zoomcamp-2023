@@ -3,16 +3,17 @@ from flask import Flask, request, jsonify
 import pickle 
 
 
-
-app = Flask('ping')
+# start flask app
+app = Flask('churn')
 input_model = "model_C=1.0.bin"
 
+# load save models
 with open(input_model, 'rb') as f_in:
     dv, model  = pickle.load(f_in)
 
+# route for post request
 @app.route('/predict', methods=['POST'])
 def predict():
-
    
     customer_dict = request.get_json()
     
@@ -27,7 +28,6 @@ def predict():
     }
 
     return jsonify(result)
-
 
 
 
