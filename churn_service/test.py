@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "http://172.26.247.137:9696/predict"
+url = "http://172.26.247.137:9090/predict"
 
 payload = json.dumps({
   "customerid": "0111-klbqg",
